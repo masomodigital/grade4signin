@@ -47,9 +47,21 @@
             margin-bottom: 10px;
         }
 
-        /* Added styles for specific elements */
-        h1 {
-            color: red;
+        /* Styles for the buttons */
+        .submit-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .copy-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
         }
 
         strong {
@@ -63,12 +75,13 @@
     <img src="https://i.imgur.com/mwpTHJj.png" alt="Grade 4 Icon" width="100" height="100">
 
     <h1>SIGN IN TO GRADE 4</h1>
-    <h3>Enter Your <strong>Name</strong> & The <strong>Password</strong> You Received. If You Are Not A Member Sign Up Now!</a> To Get Access!</h3>
+    <h3>Enter Your <strong>Name</strong> & The <strong>Password</strong> You Received. If You Are Not A Member Sign Up Now! To Get Access!</h3>
 
     <form name="myForm" onsubmit="return validateForm()">
         <p><strong>Name:</strong> <input name="name" type="text" required /></p>
         <p><strong>Password:</strong> <input name="password" type="password" required /></p>
-        <input type="submit" value="Submit" />
+        <input type="submit" class="submit-button" value="Submit" />
+        <button type="button" class="copy-button" onclick="copyPassword()">Copy Password</button>
     </form>
 
     <script>
@@ -85,6 +98,15 @@
             }
             window.location.href = "https://sites.google.com/view/forgrade-4/home";
             return false;
+        }
+
+        function copyPassword() {
+            const password = '23406634';
+            navigator.clipboard.writeText(password).then(() => {
+                alert("Password copied to clipboard: " + password);
+            }).catch(err => {
+                alert("Failed to copy password: ", err);
+            });
         }
     </script>
 
